@@ -1,0 +1,58 @@
+<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.Client</groupId>
+  <artifactId>Clientjava</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  
+  
+  <dependencies>
+	  
+	<dependency>
+		<groupId>io.grpc</groupId>
+		<artifactId>grpc-netty-shaded</artifactId>
+		<version>1.62.2</version>
+		<scope>runtime</scope>
+  	</dependency>
+  
+  	<dependency>
+    	<groupId>io.grpc</groupId>
+    	<artifactId>grpc-protobuf</artifactId>
+    	<version>1.62.2</version>
+  	</dependency>
+  
+  	<dependency>
+    	<groupId>io.grpc</groupId>
+    	<artifactId>grpc-stub</artifactId>
+    	<version>1.62.2</version>
+  	</dependency>
+  
+  	<dependency> <!-- necessary for Java 9+ -->
+    	<groupId>org.apache.tomcat</groupId>
+    	<artifactId>annotations-api</artifactId>
+    	<version>6.0.53</version>
+    	<scope>provided</scope>
+  	</dependency>
+  	
+  </dependencies>
+  
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.2.0</version> <!-- Adjust version if needed -->
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>com.example.imagesearch.ImageSearchClient</mainClass> <!-- Specify your main class here -->
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+  
+  
+  
+</project>
