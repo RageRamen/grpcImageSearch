@@ -18,7 +18,7 @@
 
 ### 4. Copy data from the database folder into the Volume. (Only needs to be done once for the first time)
 
-- docker cp database/. [Put the ID of the server container here]c:/app/volume
+- docker cp database/. [Put the ID of the server container here, no brakets]:/app/volume
 
 ### Client Git Bash Commands:
 
