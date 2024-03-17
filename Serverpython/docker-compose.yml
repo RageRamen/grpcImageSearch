@@ -1,0 +1,25 @@
+version: '3.8'
+
+volumes:
+  my_dataset_volume:
+
+services:
+  image_search_server:
+    image: image-search-server
+    ports:
+      - "50051:50051"
+    volumes:
+      - my_dataset_volume:/app/volume
+
+  dataset_copy:
+    image: busybox
+    volumes:
+      - /path/to/local/dataset:/dataset
+      - my_dataset_volume:/app/volume
+    command: cp -r /dataset/. /app/volume
+    depends_on:
+      - image_search_server
+
+
+
+  

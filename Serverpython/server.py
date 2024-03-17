@@ -1,5 +1,6 @@
 from concurrent import futures
 import grpc
+import os
 import random
 
 import image_search_pb2
@@ -9,14 +10,30 @@ import image_search_pb2_grpc
 class ImageSearchServicer(image_search_pb2_grpc.ImageSearchServicer):
     def SearchImage(self, request, context):
         keyword = request.keyword
-        if keyword == "ramen":
-            # If the keyword matches "ramen", load the image data from the file
-            with open("dataset/ramen.jpg", "rb") as f:
-                image_data = f.read()
+
+        directory = f"volume/{keyword}/"
+
+        if not os.path.isdir(directory):
+            image_data = b'Keyword does not exist as a folder ' + bytes(directory, 'utf-8')
+            image_name = ""
         else:
-            # If the keyword is not "ramen", return a default image data or handle the error as needed
-            image_data = b'Default image data for unknown keyword'
-        return image_search_pb2.ImageResponse(image_data=image_data)
+            directory_list = os.listdir(directory)
+            #print(directory_list)
+
+            image_name = random.choice(directory_list)
+            dir_ranking_item = directory + image_name
+
+            if os.path.isfile(dir_ranking_item):
+                with open(dir_ranking_item, "rb") as f:
+                    #print(dir_ranking_item)
+                    image_data = f.read()
+            else:
+                image_data = b'Image data not present in directory ' + bytes(dir_ranking_item, 'utf-8')
+                image_name = ""
+
+        
+        
+        return image_search_pb2.ImageResponse(image_data=image_data, image_name=image_name)
 
 def serve():
     port = "50051"
