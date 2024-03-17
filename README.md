@@ -1,33 +1,38 @@
 # grpcImageSearch
 
-Create Volume:
+## Server Git Bash Commands:
 
-docker volume create dataset_volume
+### 1. Protoc command:
 
-docker cp dataset/. [Put the ID of the image-search-server]c:/app/volume
+- python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. image_search.proto
 
-docker run -d -p 50051:50051 -v my_dataset_volume:/app/volume image-search-server
+### 2. Build Container and Create a Volume:
 
+- docker build -t image-search-server .
 
+- docker volume create database_volume
 
-Server Git Bash Commands:
+### 3. Run Docker Container and Mount the Volume:
 
-Run the protoc command:
-python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. image_search.proto
+- docker run -d -p 50051:50051 -v database_volume:/app/volume image-search-server
 
-Build the docker container:
-docker build -t image-search-server .
+### 4. Copy data from the database folder into the Volume. (Only needs to be done once for the first time)
 
-Run the docker container:
-docker run -d -p 50051:50051 image-search-server
+- docker cp database/. [Put the ID of the server container here]c:/app/volume
 
-Client Git Bash Commands:
+### Client Git Bash Commands:
 
-mvn clean
+### 1. Protoc command:
 
-mvn install
+- protoc --java_out=src/main/java --grpc_out=src/main/java src/main/java/image_search.proto
 
-protoc --java_out=src/main/java --grpc_out=src/main/java src/main/java/image_search.proto
+### 2. Clean and install Maven Project:
 
-mvn exec:java -Dexec.mainClass="ImageSearchClient"
+- mvn clean
+
+- mvn install
+
+### 3. Run the Client Maven Project
+
+- mvn exec:java -Dexec.mainClass="ImageSearchClient"
 
