@@ -36,3 +36,6 @@
 
 - mvn exec:java -Dexec.mainClass="ImageSearchClient"
 
+### 4. Test Cases
+
+- Open up ImageSearchClient.java and change the string in client.searchImage("pokemon"); to test for the other cases located in the database directory
