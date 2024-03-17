@@ -1,5 +1,10 @@
 # grpcImageSearch
 
+## Before you run:
+
+- Maven, protoc, and protoc-gen-grpc setup as the environment variables.
+- Windows 11 was used for this project
+
 ## Server Git Bash Commands:
 
 ### 1. Protoc command:
