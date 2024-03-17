@@ -13,4 +13,16 @@ public interface ImageResponseOrBuilder extends
    * @return The imageData.
    */
   com.google.protobuf.ByteString getImageData();
+
+  /**
+   * <code>string image_name = 2;</code>
+   * @return The imageName.
+   */
+  java.lang.String getImageName();
+  /**
+   * <code>string image_name = 2;</code>
+   * @return The bytes for imageName.
+   */
+  com.google.protobuf.ByteString
+      getImageNameBytes();
 }

@@ -36,10 +36,10 @@ public final class ImageSearchOuterClass {
     java.lang.String[] descriptorData = {
       "\n src/main/java/image_search.proto\022\014imag" +
       "e_search\" \n\rSearchRequest\022\017\n\007keyword\030\001 \001" +
-      "(\t\"#\n\rImageResponse\022\022\n\nimage_data\030\001 \001(\0142" +
-      "V\n\013ImageSearch\022G\n\013SearchImage\022\033.image_se" +
-      "arch.SearchRequest\032\033.image_search.ImageR" +
-      "esponseB\002P\001b\006proto3"
+      "(\t\"7\n\rImageResponse\022\022\n\nimage_data\030\001 \001(\014\022" +
+      "\022\n\nimage_name\030\002 \001(\t2V\n\013ImageSearch\022G\n\013Se" +
+      "archImage\022\033.image_search.SearchRequest\032\033" +
+      ".image_search.ImageResponseB\002P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -56,7 +56,7 @@ public final class ImageSearchOuterClass {
     internal_static_image_search_ImageResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_image_search_ImageResponse_descriptor,
-        new java.lang.String[] { "ImageData", });
+        new java.lang.String[] { "ImageData", "ImageName", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

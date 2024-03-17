@@ -22,7 +22,9 @@ public class ImageSearchClient {
 
         try (FileOutputStream outputStream = new FileOutputStream("result.jpg")) {
             outputStream.write(response.getImageData().toByteArray());
-            System.out.println("Image received and saved.");
+            
+            System.out.println("Image received and saved. " + response.getImageName());
+            //System.out.println(response);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,7 +37,7 @@ public class ImageSearchClient {
     public static void main(String[] args) throws InterruptedException {
         ImageSearchClient client = new ImageSearchClient("localhost", 50051);
         try {
-            client.searchImage("ramen");
+            client.searchImage("pokemon");
         } finally {
             client.shutdown();
         }
