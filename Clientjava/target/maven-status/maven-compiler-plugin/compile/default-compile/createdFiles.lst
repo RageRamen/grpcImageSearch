@@ -1,3 +1,4 @@
+ImageSearchClient$1.class
 image_search\SearchRequest$Builder.class
 image_search\ImageSearchGrpc$ImageSearchFileDescriptorSupplier.class
 image_search\ImageSearchGrpc$AsyncService.class
