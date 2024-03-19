@@ -2,7 +2,7 @@
 
 - Apache Maven, protoc, and protoc-gen-grpc must be downloaded and setup as the environment variables. For Windows, I use the "edit the system environment variable" to add the paths to each of the bin directories of the Apache Maven, protoc, and protoc-gen-grpc. Also docker commands are required but that should already be installed when docker desktop is installed.
 - gRPC and gRPC tools should be installed using python -m pip install grpcio and python -m pip install grpcio-tools from the Python Quick Start Guide. 
-- Note: Windows and Git Bash was used for this project.
+- Note: Windows and Git Bash was used for this project. Also the Dockerfile for the client java does not work, so the containerization of the client was unable to be complete.
 
 ## Run Server Git Bash Commands:
 
