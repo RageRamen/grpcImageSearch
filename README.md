@@ -1,7 +1,8 @@
-## Before you run:
+# Before you run:
 
-- The Maven, protoc, and protoc-gen-grpc must be downloaded and setup as the environment variables. For windows, I use the "edit the system environment variable"
-- Windows and git bash was used for this project.
+- Apache Maven, protoc, and protoc-gen-grpc must be downloaded and setup as the environment variables. For Windows, I use the "edit the system environment variable" to add the paths to each of the bin directories of the Apache Maven, protoc, and protoc-gen-grpc. Also docker commands are required but that should already be installed when docker desktop is installed.
+- gRPC and gRPC tools should be installed using python -m pip install grpcio and python -m pip install grpcio-tools from the Python Quick Start Guide. 
+- Note: Windows and Git Bash was used for this project.
 
 ## Run Server Git Bash Commands:
 
@@ -15,13 +16,15 @@
 
 - $ docker volume create database_volume
 
-### 3. Run Docker Container and Mount the Volume:
+### 3. Run Docker Container and Mount the Volume to the Container:
 
 - $ docker run -d -p 50051:50051 -v database_volume:/app/volume image-search-server
 
-### 4. Copy data from the database folder into the Volume. (Only needs to be done once for the first time)
+### 4. Copy data from the database folder into the Volume. (Only needs to be done once for the first time since the Volume is empty when first created)
 
 - $ docker cp database/. [Put the ID of the server container here, no brakets]:/app/volume
+
+# Now the server should be running in docker and the volume has the contents linked to the /app/volume directory. 
 
 ### Run Client Git Bash Commands:
 
@@ -40,5 +43,8 @@
 ### 4. Test Cases
 
 - You can see a gui pop up and you can use the search bar. There are 5 test cases meaning that there are 5 keywords: ramen, rice, egg, cake, pokemon. When you search and enter for any of these keywords, you should notice that the "result.jpg" image gets created/updated with a random image based on the keyword. Opening the result.jpg will show the sent image.
-- The odd thing is that even if you put a non keyword, it still updates the image but just with unusable data. So you shouldn't be able to open it. Oddly this issue happens when I switched from using local database directory to using the volume instead.
-- Note: The database folder is there for you to copy the images into Volume and the Volume is mounted to the volume directory with it's images. So when the server looks for an image, it uses the Create Volume's images and not the database folder. Just here for clarification.
+- Remember, each keyword has a corresponding directory that contains 3 images based on the keyword like the ramen keyword has 3 images called: ramen_drawn, ramen_real, and ramen_instant. So searhing the ramen keyword will sent one of these 3 images. Same thing applies to the other keywords and their directory of images.
+
+## Unusual Behaviors of the Code
+- The odd thing is that even if you put a non keyword, it still updates the image but just with unusable data. So you shouldn't be able to open it. Oddly this issue happens when I switched from using local database directory to using the volume instead. Still odd and it might just be because of docker.
+- Note: The database folder is there for you to copy the images into Volume and the Volume is mounted to the /app/volume directory with it's own copy of the images. So when the server looks for an image, it uses the Create Volume's images and not the database folder. Just here for clarification.
