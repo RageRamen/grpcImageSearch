@@ -40,11 +40,11 @@
 
 - $ mvn exec:java -Dexec.mainClass="ImageSearchClient"
 
-### 4. Test Cases
+### 4. Searching the keywords on the GUI and Test Cases
 
-- You can see a gui pop up and you can use the search bar. There are 5 test cases meaning that there are 5 keywords: ramen, rice, egg, cake, pokemon. When you search and enter for any of these keywords, you should notice that the "result.jpg" image gets created/updated with a random image based on the keyword. Opening the result.jpg will show the sent image.
+- You can see a gui pop up and you can use the search bar. There are 5 test cases meaning that there are 5 keywords: ramen, rice, egg, cake, pokemon. When you search and enter for any of these keywords, you should notice that the "result.jpg" image gets created/updated with a random image based on the keyword. Opening the result.jpg will show the sent image. The result.jpg keeps the same name to avoid confusion when multiple images are downloaded. So if you keep pressing entering and checking the result.jpg, the image will change with the randomly sent image data.
 - Remember, each keyword has a corresponding directory that contains 3 images based on the keyword like the ramen keyword has 3 images called: ramen_drawn, ramen_real, and ramen_instant. So searhing the ramen keyword will sent one of these 3 images. Same thing applies to the other keywords and their directory of images.
 
 ## Unusual Behaviors of the Code
-- The odd thing is that even if you put a non keyword, it still updates the image but just with unusable data. So you shouldn't be able to open it. Oddly this issue happens when I switched from using local database directory to using the volume instead. Still odd and it might just be because of docker.
-- Note: The database folder is there for you to copy the images into Volume and the Volume is mounted to the /app/volume directory with it's own copy of the images. So when the server looks for an image, it uses the Create Volume's images and not the database folder. Just here for clarification.
+- The odd thing is that even if you put a non keyword, it still updates the image but just with empty data. So you shouldn't be able to open it. Oddly this issue happened when I switched from using local database directory to using the volume instead. Still odd and it might just be because of docker volume acting odd.
+- Note: The database folder is there for you to copy the images into Volume and the Volume is mounted to the /app/volume directory with it's own copy of the images. So when the server looks for an image, it uses the Create Volume's images and not the locally stored database folder. Just here for clarification.
