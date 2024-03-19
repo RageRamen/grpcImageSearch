@@ -1,8 +1,6 @@
-# grpcImageSearch
-
 ## Before you run:
 
-- Maven, protoc, and protoc-gen-grpc must be setup as the environment variables.
+- The Maven, protoc, and protoc-gen-grpc must be downloaded and setup as the environment variables. For windows, I use the "edit the system environment variable"
 - Windows and git bash was used for this project.
 
 ## Run Server Git Bash Commands:
